@@ -50,7 +50,6 @@ public class GameController_forConsoleResponse {
 
 //	method to display player names
 	static void DisplayPlayers(String[] players){
-		System.out.println();
 		for(int j=0; j<players.length; j++)
 			System.out.print(players[j] + " | ");
 		System.out.println();
@@ -62,14 +61,16 @@ public class GameController_forConsoleResponse {
 		DisplayPlayers(players);
 		for(int i=0; i<choices.length; i++)
 			System.out.print(choices[i] + " | ");
-		System.out.println();
+		System.out.println("\n");
 	}
 	
 	
 //	method to display 2D array of winnings against each player
 	static void DisplayAgainst(int[][] against, String[] players) {
+		System.out.print("\t");
 		DisplayPlayers(players);
 		for(int i=0; i<against.length; i++) {
+			System.out.print(players[i] + " | ");
 			for(int j=0; j<against.length; j++)
 				System.out.print(against[i][j] + " | ");
 			System.out.println();
@@ -85,6 +86,7 @@ public class GameController_forConsoleResponse {
 		DisplayPlayers(players);
 		for(int i=0; i<4; i++)
 			System.out.print(totalWins[i] + " | ");
+		System.out.println();
 	}
 	
 
@@ -102,7 +104,7 @@ public class GameController_forConsoleResponse {
 
 		for(int i=0; i<50; i++){		//Loop for each round of game.
 
-			System.out.println("Round " + (i+1));
+			System.out.println("Round " + (i+1) + "\n");
 
 			String[] currRound = new String[n];		//Array for maintaining respective player choice for each iteration in game.
 

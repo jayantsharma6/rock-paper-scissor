@@ -11,21 +11,23 @@ up till that round, should also be printed.
 -  An Integer - 'noOfPlayers' - for Number of Players	
 - Array of Strings - 'players[]' - for Player Names	
 - 2D Array/ Matrix of Integer - 'against[][]' - for maintaining Winning against each player	
-- Array of Integers - totalWins[] - for maintaining cumulative winnings of each player.	
-- Array of Strings - 'currRound[]' - for Storing each Player's chosen option, for every round.	
+- Array of Integers - totalWins[] - for maintaining cumulative winnings of each player.	One to one mapping of players[] to totalWins[].
+- Array of Strings - 'currRound[]' - for Storing each Player's chosen option for every round. One to one mapping of players[] to currRound[]
+for each round.
 > Size of arrays will be based on noOfPlayers.	
 
 ## Approach	
-1. Set number of Players	
-2. Set player names	
-3. for every round, repeat - 	
-   - Get every player's choice of option for current round.	
+1. Set number of Players - noOfPlayers	
+2. Set player names	in players[]
+3. for every round, repeat : 	
+   - Get every player's choice of option for current round in currRound[]. Each index in currArray[] represents choice of player at same index
+   in player[].
    - Print player wise choices.	
-   - Compare choices of each player to calculate who won from whom. For comparison, every index is compared with indexes ahead of it, starting
-   from 0 index.	
-	 - If 2 players have same choice, none of them gets point. So no operation is performed.	
-     - Else, check if second player's choice beats first player's choice. If yes, increment second player's win against first player. If no,
-	 increment first player's win against second player. In both cases, also increment respective winning player's cumulative win.	
+   - Compare choices of each player to calculate who won from whom. For comparison, every element in currRound[] is compared with element at 
+   indexes ahead of it. For example, for 4 player game, index 0 compares with 1,2 and 3. Index 1 compares with 2,3 and so on.
+	 - If both comparing players have same choice, none of them can win. So no operation needs to be performed.	
+     - Else, check if second player's choice beats first player's choice. If yes, increment second player's win against first player in against[][].
+	 If no, increment first player's win against second player. In both cases, also increment winning player's cumulative win in totalWins[].	
    - Upon completion of comparison, print each player's winning against every other.	
 4. Upon completion of all rounds, print cumulative winnings of each player.
 
@@ -47,10 +49,10 @@ Output at HTML Page (secondary, commented controller)
 
 ### [1. Game Controller - for Response in Console](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
 
-This controller prints output at the console itself using Core Java concepts. Various methods are used to complete required tasks.
-Each round displays the current round number, players with their chosen option, and their winnings against every other player.
-In the 2nd table for each round, each row represents the respective index player. And the Players above the matrix represent each column
-of against matrix. For example, for 4 players, 1st row represents 1st Player.
+This controller prints output at the console itself using Core Java concepts. Methods are developed in a way that allow abstraction and easy
+modifications in future, if required. For game, each round displays the current round number, players with their chosen option, and their winnings
+against every other player. In the 2nd table, each row represents the respective player. For example, for 4 players, 1st row represents 1st Player.
+Players above the matrix represent column headings of against[] matrix. 
 Every table data corresponds to the column value specified above.
 
 ![](/images/console-output1.png)
@@ -60,11 +62,10 @@ Every table data corresponds to the column value specified above.
 
 ### [2. Game Controller - for Response in HTML page](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
 
-This controller displays the output at a HTML page using in-line HTML tags with Java code. Here as well, various methods are
-used to complete required task. The output is well formatted here with tables and better fonts. To display the operations as a HTML page,
-the Controller returns a ResponseBody. This response body is recieved as String from the program. The first table displays players with their
-chosen option, and the second table displays each player's winnings against every other player. This controller is commented in project for
-the proper working of first controller.
+This controller displays the output at a HTML page using in-line HTML tags with Java code. Here as well, methods allow abstraction and easy
+modifications. The output is well formatted here with tables and better fonts. To display the operations as a HTML page, the Controller returns
+a ResponseBody. This response body is recieved as String from the program. The first table displays players with their chosen option, and the
+second table displays each player's winnings against every other player. This controller is commented in project for the proper working of first controller.
 
 ![](/images/html-output1.png)
 ![](/images/html-output2.png)
