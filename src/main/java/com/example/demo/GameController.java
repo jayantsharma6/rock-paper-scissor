@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,6 +14,7 @@ public class GameController {
 		Random r = new Random();
 		return list.get(r.nextInt(list.size()));
 	}
+	
 
 //	code to decide who wins and if draw
 	static int whoWins(String first, String second){
@@ -39,12 +39,14 @@ public class GameController {
 	
 	
 //	method to set player names
-	static String[] SetPlayers(String[] players) {
-		for(int i=0; i<players.length; i++)
+	static void SetPlayers(Game g) {
+		String[] players = new String[g.getPlayers().length];
+		for(int i=0; i<g.getPlayers().length; i++)
 			players[i] = "Player " + (i+1);
-
-		return players;
+		
+		g.setPlayers(players);
 	}
+	
 
 //	method to display player names
 	static void DisplayPlayers(String[] players){
@@ -79,7 +81,7 @@ public class GameController {
 	
 //	method to display the result
 	static void DisplayResult(String[] players, int[] totalWins) {
-		System.out.println("Results");
+		System.out.println("Result");
 		DisplayPlayers(players);
 		for(int i=0; i<4; i++)
 			System.out.print(totalWins[i] + " | ");
@@ -89,62 +91,53 @@ public class GameController {
 //	Driving method
 	@RequestMapping("/start-game")
 	void startGame() {
-		
-//		Creating list of options.
-		List<String> list = new ArrayList<>();
-		list.add("Rock");
-		list.add("Paper");
-		list.add("Scissor");
 
 		int n = 4;		//Assigning number of players
-
-//		Creating array of players and assigning each player name.
-		String[] players = new String[n];
-		players = SetPlayers(players);
 		
-		int[] totalWins = new int[n];	//Array for maintaining total wins for each player.
+		Game g = new Game(n);
 
-		int[][] Against = new int[4][4];	//2D Array/Matrix for maintaining each player's winning against another.
-
+//		Assigning each player name.
+		SetPlayers(g);
+		
 
 		for(int i=0; i<50; i++){		//Loop for each round of game.
 
 			System.out.println("Round " + (i+1));
 
-			String[] currGame = new String[n];		//Array for maintaining respective player choice for each iteration in game.
+			String[] currRound = new String[n];		//Array for maintaining respective player choice for each iteration in game.
 
 //			Set player choice for current round of game.
 			for(int j=0; j<n; j++)
-				currGame[j] = getRandom(list);
+				currRound[j] = getRandom(g.list);
 
 //			Display choice of each player for the round.
-			DisplayChoices(currGame, players);
+			DisplayChoices(currRound, g.getPlayers());
 			
 			
 //			Code to check winners of current round and update total-wins and wins-against-each-player.
 			for(int j=0; j<n-1; j++){
-				for(int k=j+1; k<n; k++){
-					if(currGame[j]!=currGame[k]){
-						int x = whoWins(currGame[j], currGame[k]);
+				for(int k=j+1; k<n; k++){		//each element in current round array will compare to element ahead in index.
+					if(currRound[j]!=currRound[k]){
+						int x = whoWins(currRound[j], currRound[k]);
 						if(x==1){				//to update winning of j'th player -> updating upper triangular matrix
-							totalWins[j]++;
-							Against[j][k]++;
+							g.getTotalWins()[j]++;
+							g.getAgainst()[j][k]++;
 						}
 						else{					//to update winning of k'th player -> updating lower triangular matrix
-							totalWins[k]++;
-							Against[k][j]++;							
+							g.getTotalWins()[k]++;
+							g.getAgainst()[k][j]++;							
 						}
 					}
 				}
 			}
 
 //			Displaying winnings against each player till current round.
-			DisplayAgainst(Against, players);
+			DisplayAgainst(g.getAgainst(), g.getPlayers());
 
 		}
 
 //		Displaying total winnings of each player -> Result
-		DisplayResult(players, totalWins);
+		DisplayResult(g.getPlayers(), g.getTotalWins());
 
 	}
 }

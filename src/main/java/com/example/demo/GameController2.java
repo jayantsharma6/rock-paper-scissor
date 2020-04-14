@@ -1,6 +1,5 @@
 //package com.example.demo;
 //
-//import java.util.ArrayList;
 //import java.util.List;
 //import java.util.Random;
 //
@@ -40,11 +39,12 @@
 //	
 //	
 ////	method to set player names
-//	static String[] SetPlayers(String[] players) {
-//		for(int i=0; i<players.length; i++)
+//	static void SetPlayers(Game g) {
+//		String[] players = new String[g.getPlayers().length];
+//		for(int i=0; i<g.getPlayers().length; i++)
 //			players[i] = "Player " + (i+1);
-//
-//		return players;
+//		
+//		g.setPlayers(players);
 //	}
 //
 ////	method to display player names
@@ -104,22 +104,13 @@
 //		
 //		String result = "<h1 style=\"color:blue;text-align:center\">Rock-Paper-Scissor Game</h1>";
 //		
-////		Creating list of options.
-//		List<String> list = new ArrayList<>();
-//		list.add("Rock");
-//		list.add("Paper");
-//		list.add("Scissor");
-//
 //		int n = 4;		//Assigning number of players
-//
-////		Creating array of players and assigning each player name.
-//		String[] players = new String[n];
-//		players = SetPlayers(players);
 //		
-//		int[] totalWins = new int[n];	//Array for maintaining total wins for each player.
+//		Game g = new Game(n);
 //
-//		int[][] Against = new int[4][4];	//2D Array/Matrix for maintaining each player's winning against another.
-//
+////		Assigning each player name.
+//		SetPlayers(g);
+//		
 //
 //		for(int i=0; i<50; i++){		//Loop for each round of game.
 //
@@ -129,11 +120,9 @@
 //
 ////			Set player choice for current round of game.
 //			for(int j=0; j<n; j++)
-//				currGame[j] = getRandom(list);
+//				currGame[j] = getRandom(g.list);
 //
-////			Display choice of each player for the round.
-////			result += DisplayPlayers(players);
-//			result += DisplayChoices(currGame, players);
+//			result += DisplayChoices(currGame, g.getPlayers());
 //			
 //			
 ////			Code to check winners of current round and update total-wins and wins-against-each-player.
@@ -142,30 +131,29 @@
 //					if(currGame[j]!=currGame[k]){
 //						int x = whoWins(currGame[j], currGame[k]);
 //						if(x==1){				//to update winning of j'th player -> updating upper triangular matrix
-//							totalWins[j]++;
-//							Against[j][k]++;
+//							g.getTotalWins()[j]++;
+//							g.getAgainst()[j][k]++;
 //						}
 //						else{					//to update winning of k'th player -> updating lower triangular matrix
-//							totalWins[k]++;
-//							Against[k][j]++;							
+//							g.getTotalWins()[k]++;
+//							g.getAgainst()[k][j]++;							
 //						}
 //					}
 //				}
 //			}
 //
 ////			Displaying winnings against each player till current round.
-////			result += "&emsp;&emsp;&emsp;&emsp;" + DisplayPlayers(players);
-//			result += DisplayAgainst(Against, players);
+//			result += DisplayAgainst(g.getAgainst(), g.getPlayers());
 //			result += "<br>";
 //
 //		}
 //
 ////		Displaying total winnings of each player -> Result
 //		result += "<h2 style=\"text-align:center\">Results</h2>";
-//		result += DisplayPlayers(players);
+//		result += DisplayPlayers(g.getPlayers());
 //		result += "<p style=\"text-align:center\">";
 //		for(int i=0; i<4; i++)
-//			result += totalWins[i] + " | ";
+//			result += g.getTotalWins()[i] + " | ";
 //		
 //		return result;
 //
