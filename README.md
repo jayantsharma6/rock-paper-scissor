@@ -5,7 +5,7 @@ On each round, choices of each player should be chosen at random and printed. Al
 
 ## Data Storing Requirements
 ```
-_ List of String - 'list' - for Rock, Paper, Scissor
+- List of String = 'list' = for Rock, Paper, Scissor
 * An Integer - 'noOfPlayers' - for Number of Players
 * Array of Strings - 'players[]' - for Player Names
 * 2D Array/ Matrix of Integer - 'against[][]' - for maintaining Winning against each player
