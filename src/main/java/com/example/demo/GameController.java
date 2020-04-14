@@ -36,6 +36,15 @@ public class GameController {
 
 		return 1;
 	}
+	
+	
+//	method to set player names
+	static String[] SetPlayers(String[] players) {
+		for(int i=0; i<players.length; i++)
+			players[i] = "Player " + (i+1);
+
+		return players;
+	}
 
 //	method to display player names
 	static void DisplayPlayers(String[] players){
@@ -44,7 +53,40 @@ public class GameController {
 			System.out.print(players[j] + " | ");
 		System.out.println();
 	}
+	
+		
+//	method to display choices for current game
+	static void DisplayChoices(String[] choices, String[] players) {
+		DisplayPlayers(players);
+		for(int i=0; i<choices.length; i++)
+			System.out.print(choices[i] + " | ");
+		System.out.println();
+	}
+	
+	
+//	method to display 2D array of winnings against each player
+	static void DisplayAgainst(int[][] against, String[] players) {
+		DisplayPlayers(players);
+		for(int i=0; i<against.length; i++) {
+			for(int j=0; j<against.length; j++)
+				System.out.print(against[i][j] + " | ");
+			System.out.println();
+		}
+		System.out.println();
 
+	}
+	
+	
+//	method to display the result
+	static void DisplayResult(String[] players, int[] totalWins) {
+		System.out.println("Results");
+		DisplayPlayers(players);
+		for(int i=0; i<4; i++)
+			System.out.print(totalWins[i] + " | ");
+	}
+	
+
+//	Driving method
 	@RequestMapping("/start-game")
 	void startGame() {
 		
@@ -58,9 +100,8 @@ public class GameController {
 
 //		Creating array of players and assigning each player name.
 		String[] players = new String[n];
-		for(int i=0; i<players.length; i++)
-			players[i] = "Player " + (i+1);
-
+		players = SetPlayers(players);
+		
 		int[] totalWins = new int[n];	//Array for maintaining total wins for each player.
 
 		int[][] Against = new int[4][4];	//2D Array/Matrix for maintaining each player's winning against another.
@@ -72,26 +113,24 @@ public class GameController {
 
 			String[] currGame = new String[n];		//Array for maintaining respective player choice for each iteration in game.
 
-//			Get player choice for each round of game.
+//			Set player choice for current round of game.
 			for(int j=0; j<n; j++)
 				currGame[j] = getRandom(list);
 
 //			Display choice of each player for the round.
-			DisplayPlayers(players);
-			for(int j=0; j<n; j++)
-				System.out.print(currGame[j] + " | ");
-			System.out.println();
-
-//			Code to check winners of current round and update total wins and wins against each player.
+			DisplayChoices(currGame, players);
+			
+			
+//			Code to check winners of current round and update total-wins and wins-against-each-player.
 			for(int j=0; j<n-1; j++){
 				for(int k=j+1; k<n; k++){
 					if(currGame[j]!=currGame[k]){
 						int x = whoWins(currGame[j], currGame[k]);
-						if(x==1){
+						if(x==1){				//to update winning of j'th player -> updating upper triangular matrix
 							totalWins[j]++;
 							Against[j][k]++;
 						}
-						else{
+						else{					//to update winning of k'th player -> updating lower triangular matrix
 							totalWins[k]++;
 							Against[k][j]++;							
 						}
@@ -100,21 +139,12 @@ public class GameController {
 			}
 
 //			Displaying winnings against each player till current round.
-			DisplayPlayers(players);
-			for(int j=0; j<4; j++){
-				for(int k=0; k<4; k++)
-					System.out.print(Against[j][k] + " | ");
-				System.out.println();
-			}
-			System.out.println();
+			DisplayAgainst(Against, players);
 
 		}
 
 //		Displaying total winnings of each player -> Result
-		System.out.println("Results");
-		DisplayPlayers(players);
-		for(int i=0; i<4; i++)
-			System.out.print(totalWins[i] + " | ");
+		DisplayResult(players, totalWins);
 
 	}
 }
