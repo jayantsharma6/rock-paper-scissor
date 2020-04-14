@@ -4,7 +4,7 @@ The objective is to create a game of 50 rounds, played by 4 players viz; Player 
 On each round, choices of each player should be chosen at random and printed. Along with that, winnings of each player against every other player, up till that round, should also be printed.
 
 ## Data Storing Requirements
-```
+
 -List of String = 'list' = for Rock, Paper, Scissor
 * An Integer - 'noOfPlayers' - for Number of Players
 * Array of Strings - 'players[]' - for Player Names
@@ -12,7 +12,7 @@ On each round, choices of each player should be chosen at random and printed. Al
 * Array of Integers - totalWins[] - for maintaining cumulative winnings of each player.
 * Array of Strings - 'currRound[]' - for Storing each Player's chosen option, for every round.
 > Size will be based on noOfPlayers.
-```
+
 
 ## Approach
 1. Set number of Players
