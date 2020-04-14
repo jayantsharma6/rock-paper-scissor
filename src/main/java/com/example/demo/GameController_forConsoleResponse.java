@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GameController {
+public class GameController_forConsoleResponse {
 
 //	code to chose random of rock-paper-scissor
 	static String getRandom(List<String> list){
