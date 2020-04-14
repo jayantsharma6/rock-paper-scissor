@@ -33,19 +33,19 @@ up till that round, should also be printed.
 ## Project Files
 ```
 [Game](/tree/master/src/main/java/com/example/demo/Game.java)
-[GameController_forConsoleResponse](/tree/master/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
-[GameController2_forHtmlResponse](/tree/master/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
+[GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
+[GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
 ```
 
 
 ### Output is generated in two manners
 ```
-Output at Console itself - [GameController_forConsoleResponse](GameController_forConsoleResponse.java)
-Output at HTML Page (secondary, commented controller) - [GameController2_forHtmlResponse](GameController2_forHtmlResponse.java)
+Output at Console itself - [GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
+Output at HTML Page (secondary, commented controller) - [GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
 ```
 
 
-### [1. Game Controller - for Response in Console](/tree/master/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
+### [1. Game Controller - for Response in Console](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
 
 This controller prints output at the console itself using Core Java concepts. Various methods are used to complete required tasks.
 Each round displays the current round number, players with their chosen option, and their winnings against every other player.
@@ -58,7 +58,7 @@ Every table data corresponds to the column value specifies above.
 ![](/images/console-output3.png)
 
 
-### [2. Game Controller - for Response in HTML page](/tree/master/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
+### [2. Game Controller - for Response in HTML page](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
 
 This controller displays the output at a HTML page using in-line HTML tags with Java code. Here as well, various methods are
 used to complete required task. The output is well formatted here with tables and better fonts. To display the operations as a HTML page,
