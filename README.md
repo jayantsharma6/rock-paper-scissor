@@ -32,9 +32,9 @@ up till that round, should also be printed.
 
 ## Project Files
 
-[Game](/tree/master/src/main/java/com/example/demo/Game.java)
-[GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
-[GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
+1. [Game](/tree/master/src/main/java/com/example/demo/Game.java)
+2. [GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
+3. [GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
 
 
 
