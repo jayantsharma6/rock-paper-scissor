@@ -31,17 +31,17 @@ up till that round, should also be printed.
 
 
 ## Project Files
-```
+
 [Game](/tree/master/src/main/java/com/example/demo/Game.java)
 [GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
 [GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
-```
+
 
 
 ### Output is generated in two manners
 ```
-Output at Console itself - [GameController_forConsoleResponse](/src/main/java/com/example/demo/GameController_forConsoleResponse.java)
-Output at HTML Page (secondary, commented controller) - [GameController2_forHtmlResponse](/src/main/java/com/example/demo/GameController2_forHtmlResponse.java)
+Output at Console itself
+Output at HTML Page (secondary, commented controller)
 ```
 
 
@@ -63,7 +63,8 @@ Every table data corresponds to the column value specifies above.
 This controller displays the output at a HTML page using in-line HTML tags with Java code. Here as well, various methods are
 used to complete required task. The output is well formatted here with tables and better fonts. To display the operations as a HTML page,
 the Controller returns a ResponseBody. This response body is generated as String from the program. The first table displays players with their
-chosen option, and the second table displays each player's winnings against every other player.
+chosen option, and the second table displays each player's winnings against every other player. This controller is commented ob project for
+working of first controller.
 
 ![](/images/html-output1.png)
 ![](/images/html-output2.png)
