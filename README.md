@@ -1,9 +1,9 @@
-#Rock Paper Scissor Game
+# Rock Paper Scissor Game
 Rock-Paper-Scissor is a very commonaly game. Here, in this project, it is implemented using Java and Spring Boot.
 The objective is to create a game of 50 rounds, played by 4 players viz; Player 1, Player 2, Player 3, Player 4.
 On each round, choices of each player should be chosen at random and printed. Along with that, winnings of each player against every other player, up till that round, should also be printed.
 
-##Data Storing Requirements
+## Data Storing Requirements
 ```
 - List of String - 'list' - for Rock, Paper, Scissor
 - An Integer - 'noOfPlayers' - for Number of Players
