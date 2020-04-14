@@ -10,7 +10,7 @@ up till that round, should also be printed.
 - List of String - 'list' - for Rock, Paper, Scissor	
 -  An Integer - 'noOfPlayers' - for Number of Players	
 - Array of Strings - 'players[]' - for Player Names	
-- 2D Array/ Matrix of Integer - 'against[][]' - for maintaining Winning against each player. player[] x player[] mapping.
+- 2D Array/ Matrix of Integer - 'against[][]' - for maintaining Winning against each player. "player[] x player[]" mapping.
 - Array of Integers - totalWins[] - for maintaining cumulative winnings of each player.	One to one mapping of players[] to totalWins[].
 - Array of Strings - 'currRound[]' - for Storing each player's chosen option for every round. One to one mapping of players[] to currRound[],
 for each round.
@@ -20,7 +20,7 @@ for each round.
 1. Set number of Players - noOfPlayers	
 2. Set player names	in players[]
 3. for every round, repeat : 	
-   - Get every player's choice of option for current round in currRound[]. Each index in currArray[] represents choice of player at same index
+   - Get every player's choice of option for current round in currRound[]. Each index in currRound[] represents choice of a player at same index
    in player[].
    - Print player wise choices.	
    - Compare choices of each player to calculate who won from whom. For comparison, every element in currRound[] is compared with element at 
