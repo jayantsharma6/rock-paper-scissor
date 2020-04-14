@@ -21,12 +21,14 @@ up till that round, should also be printed.
 3. for every round, repeat - 	
    - Get every player's choice of option for current round.	
    - Print player wise choices.	
-   - Compare choices of each player to calculate who won from whom. For comparison, every index is compared with indexes ahead of it, starting from 0 index.	
+   - Compare choices of each player to calculate who won from whom. For comparison, every index is compared with indexes ahead of it, starting
+   from 0 index.	
 	 - If 2 players have same choice, none of them gets point. So no operation is performed.	
-     - Else, check if second player's choice beats first player's choice. If yes, increment second player's win against first player. If no, increment first player's win against second player.	
-In both cases, also increment respective winning player's cumulative win.	
+     - Else, check if second player's choice beats first player's choice. If yes, increment second player's win against first player. If no,
+	 increment first player's win against second player. In both cases, also increment respective winning player's cumulative win.	
    - Upon completion of comparison, print each player's winning against every other.	
 4. Upon completion of all rounds, print cumulative winnings of each player.
+
 
 ## Project Files
 ```
@@ -35,13 +37,15 @@ In both cases, also increment respective winning player's cumulative win.
 [GameController2_forHtmlResponse](GameController2_forHtmlResponse.java)
 ```
 
+
 ### Output is generated in two manners
 ```
 Output at Console itself - [GameController_forConsoleResponse](GameController_forConsoleResponse.java)
 Output at HTML Page (secondary, commented controller) - [GameController2_forHtmlResponse](GameController2_forHtmlResponse.java)
 ```
 
-###[Game Controller - for Response in Console](GameController_forConsoleResponse.java)
+
+### [1. Game Controller - for Response in Console](GameController_forConsoleResponse.java)
 
 This controller prints output at the console itself using Core Java concepts. Various methods are used to complete required tasks.
 Each round displays the current round number, players with their chosen option, and their winnings against every other player.
@@ -53,3 +57,19 @@ Every table data corresponds to the column value specifies above.
 ![](/images/console-output2.png)
 ![](/images/console-output3.png)
 
+
+### [2. Game Controller - for Response in HTML page](GameController2_forHtmlResponse.java)
+
+This controller displays the output at a HTML page using in-line HTML tags with Java code. Here as well, various methods are
+used to complete required task. The output is well formatted here with tables and better fonts. To display the operations as a HTML page,
+the Controller returns a ResponseBody. This response body is generated as String from the program. The first table displays players with their
+chosen option, and the second table displays each player's winnings against every other player.
+
+![](/images/html-output1.png)
+![](/images/html-output2.png)
+![](/images/html-output3.png)
+
+
+## Thankyou
+
+> PS: Check controller-1 for logic and implementation. Check controller-2 for formatted output.
