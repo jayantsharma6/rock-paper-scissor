@@ -11,8 +11,8 @@ public class GameController_forConsoleResponse {
 
 //	code to chose random of rock-paper-scissor
 	static String getRandom(List<String> list){
-		Random r = new Random();
-		return list.get(r.nextInt(list.size()));
+		Random rand = new Random();
+		return list.get(rand.nextInt(list.size()));
 	}
 	
 
